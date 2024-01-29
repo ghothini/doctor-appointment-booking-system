@@ -1,0 +1,168 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: ghostwhite;
+    font-family: 'Poppins', sans-serif;
+}
+
+// Mat overwrites 
+
+.cdk-overlay-pane {
+    width: auto !important;
+}
+
+// flex
+
+.flex {
+    display: flex;
+}
+
+.center-center {
+    align-items: center;
+    justify-content: center;
+}
+
+.a-center {
+    align-items: center;
+}
+
+.j-center {
+    justify-content: center;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.space-around {
+    justify-content: space-around;
+}
+
+// sizes
+
+.gap-1em {
+    gap: 1em;
+}
+
+.gap-05em {
+    gap: .5em;
+}
+
+.gap-2em {
+    gap: 2em;
+}
+
+.gap-4em {
+    gap: 4em;
+}
+
+
+.flex-1 {
+    flex: 1;
+}
+
+.column {
+    flex-direction: column;
+}
+
+// Fonts
+
+.text-center {
+    text-align: center;
+}
+
+// Spaces
+
+.half-width {
+    width: 50%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
+}
+
+.half-height {
+    height: 50%;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+// templates
+
+.link:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    color: #6c63ff;
+}
+
+.padding-20 {
+    padding: 20px;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+.padding-1em {
+    padding: 1em;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+input {
+    cursor: pointer;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.cdk-overlay-pane {
+    width: 50%;
+}
+
+.deleteIcon {
+    height: 25px !important;
+    width: 25px !important;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+    height: auto;
+}
+
+.hospitalName {
+    height: 95px;
+}

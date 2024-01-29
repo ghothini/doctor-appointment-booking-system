@@ -1,0 +1,31 @@
+<mat-card class="padding-10">
+    <form #appointmentAssignForm="ngForm" style="width: 600px;" class="flex column gap-1em">
+        <h2 class="margin-0 text-center">Select Doctor</h2>
+        <!-- Role -->
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Doctors</mat-label>
+            <mat-select required name="doctorName" #doctorName="ngModel" [(ngModel)]="appointmentAssignFormData.doctor">
+                <mat-option *ngFor="let doctor of allDoctors" [value]="doctor">{{doctor.firstName | titlecase}} {{doctor.lastName | titlecase}} | <b>{{doctor.specialization | titlecase}}</b></mat-option>
+            </mat-select>
+            <mat-error *ngIf="doctorName.invalid && doctorName.errors && doctorName.errors['required']">
+                Your selection is invalid
+            </mat-error>
+        </mat-form-field>
+        <div class="flex gap-1em">
+            <p>Appointment Date</p>
+            <!-- Appointment Date -->
+            <mat-form-field appearance="fill">
+                <input matInput [matDatepicker]="picker" (focus)="picker" required name="appointmentDate" #appointmentDate="ngModel" [(ngModel)]="appointmentAssignFormData.date" placeholder="Choose a date">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="appointmentDate.invalid && appointmentDate.errors && appointmentDate.errors['required']">
+                    Appointment date is required.
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="flex gap-1em">
+            <button class="flex-1" title="Cancel action" mat-raised-button color="warn" (click)="close()">Cancel</button>
+            <button class="flex-1" title="Create appointment" mat-raised-button color="primary" [disabled]="appointmentAssignForm.invalid" (click)="submit()">Submit</button>
+        </div>
+    </form>
+</mat-card>

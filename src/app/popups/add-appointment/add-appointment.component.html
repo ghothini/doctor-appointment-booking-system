@@ -1,0 +1,33 @@
+<mat-card>
+    <form #appointmentForm="ngForm">
+        <!-- Appointment Title -->
+        <mat-form-field class="full-width">
+            <mat-label>Appointment Title</mat-label>
+            <input type="text" name="title" #title="ngModel" required [(ngModel)]="appointment.title" matInput placeholder="Title for appointment">
+            <mat-error *ngIf="title.invalid && title.errors && title.errors['required']">
+                Appointment title is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <!-- Appointment Description -->
+        <mat-form-field class="full-width">
+            <mat-label>Appointment Description</mat-label>
+            <input type="text" matInput name="description" #description="ngModel" required [(ngModel)]="appointment.description" placeholder="Reason for setting appointment">
+            <mat-error *ngIf="description.invalid && description.errors && description.errors['required']">
+                Appointment description is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+        <!-- Appointment Date -->
+        <mat-form-field appearance="fill">
+            <input matInput [matDatepicker]="picker" name="appointmentDate" #appointmentDate="ngModel" required [(ngModel)]="appointment.appointmentDate" (focus)="picker.open()" placeholder="Choose a date">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="appointmentDate.invalid && appointmentDate.errors && appointmentDate.errors['required']">
+                Appointment date is required.
+            </mat-error>
+        </mat-form-field>
+        <div class="flex gap-1em">
+            <button class="flex-1" mat-raised-button color="warn" (click)="close()">Cancel</button>
+            <button class="flex-1" mat-raised-button color="primary" [disabled]="appointmentForm.invalid" (click)="submit()">Submit</button>
+        </div>
+    </form>
+</mat-card>

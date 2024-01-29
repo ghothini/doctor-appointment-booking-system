@@ -1,0 +1,25 @@
+<mat-card class="flex column gap-1em padding-20" style="width: 500px;">
+    <div class="flex column gap-1em">
+        <div class="flex space-between a-center">
+            <p class="margin-0">Patient: <b>{{appointmentToSee.patientName}}</b></p>
+            <button mat-raised-button color="white" (click)="close()">Close</button>
+        </div>
+        <p class="margin-0">Appointment ID: <b>{{appointmentToSee.id}}</b></p>
+    </div>
+    <div class="flex column">
+        <h2 class="text-center">{{appointmentToSee.title | titlecase}}</h2>
+        <p class="text-center margin-0">{{appointmentToSee.description}}</p>
+    </div>
+    <div class="flex gap-1em a.center">
+        <h3 class="margin-0">Appointment Status:</h3>
+        <button mat-raised-button [disabled]="status === 'canceled'" title="Change appointment status" [matMenuTriggerFor]="menu"
+            [color]="status === 'accepted' ? 'primary' : status === 'pending' ? 'warn' : 'accent'">{{status |
+            titlecase}}</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="submitStatus(appointmentStatus, appointmentToSee.id)"
+                *ngFor="let appointmentStatus of appointmentStatuses">{{ appointmentStatus |
+                titlecase}}
+            </button>
+        </mat-menu>
+    </div>
+</mat-card>

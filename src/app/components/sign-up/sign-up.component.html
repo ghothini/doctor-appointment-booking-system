@@ -1,0 +1,114 @@
+<div class="flex full-height center-center">
+  <mat-card class="width-90">
+    <div class="flex full-height">
+      <div class="flex column center-center">
+        <h1 class="text-center">HEALTH CARE SYSTEM</h1>
+        <img src="../../../assets/New folder/undraw_medicine_b1ol-removebg-preview.png" alt="">
+      </div>
+      <div class="flex-1">
+        <h2 class="text-center">Register</h2>
+        <form #registerForm="ngForm">
+          <!-- First Name -->
+          <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+            <input type="text" matInput placeholder="John" name="firstName" [(ngModel)]="userCreditials.firstName"
+              required #firstName="ngModel">
+            <mat-error *ngIf="firstName.errors && firstName.invalid && firstName.errors['required']">
+              First Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Last Name -->
+          <mat-form-field class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input type="text" matInput placeholder="Molefe" name="lastName" [(ngModel)]="userCreditials.lastName"
+              required #lastName="ngModel">
+            <mat-error *ngIf="lastName.errors && lastName.invalid && lastName.errors['required']">
+              Last Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Role -->
+          <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="userCreditials.role" readonly name="role" #role="ngModel" required>
+              <mat-option *ngFor="let role of roles" [value]="role">{{role | titlecase}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="role.errors?.['required']">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
+          <!-- Specialization -->
+          <mat-form-field *ngIf="userCreditials.role === 'doctor'" appearance="fill" class="full-width">
+            <mat-label>Specialization</mat-label>
+            <mat-select [(ngModel)]="userCreditials.specialization" readonly name="specialization" #specialization="ngModel" required>
+              <mat-option *ngFor="let specialization of specializations" [value]="specialization">{{specialization | titlecase}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="specialization.errors?.['required']">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
+          <!-- Medical Room -->
+          <mat-form-field *ngIf="userCreditials.role === 'doctor'" class="full-width">
+            <mat-label>Medical Room</mat-label>
+            <input type="number" matInput placeholder="202" name="room" [(ngModel)]="userCreditials.medicalRoom"
+              required #room="ngModel">
+            <mat-error *ngIf="room.errors && room.invalid && room.errors['required']">
+              Medical Room is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Availability -->
+          <mat-form-field *ngIf="userCreditials.role === 'doctor'" appearance="fill" class="full-width">
+            <mat-label>Availability</mat-label>
+            <mat-select [(ngModel)]="userCreditials.availability" [(ngModel)]="availabilities[0]" readonly name="availability" #availability="ngModel" required>
+              <mat-option *ngFor="let availability of availabilities" selected [value]="'available'"> {{availability | titlecase}} </mat-option>
+            </mat-select>
+            <mat-error *ngIf="availability.errors?.['required']">
+              Your selection is invalid
+            </mat-error>
+          </mat-form-field>
+          <!-- ID Number -->
+          <mat-form-field *ngIf="userCreditials.role === 'patient'" class="full-width">
+            <mat-label>ID Number</mat-label>
+            <input type="text" matInput placeholder="13**12****089" maxlength="13" name="idNumber"
+              [(ngModel)]="userCreditials.idNumber" required #idNumber="ngModel">
+            <mat-error *ngIf="idNumber.errors && idNumber.invalid && idNumber.errors['required']">
+              ID number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Email -->
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="example@example.com" name="email"
+              [(ngModel)]="userCreditials.email" required #email="ngModel">
+            <mat-error *ngIf="email.errors && email.invalid && email.errors['required']">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Password -->
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="***" name="password" [(ngModel)]="userCreditials.password"
+              required #password="ngModel">
+            <mat-error *ngIf="password.errors && password.invalid && password.errors['required']">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Confirm Password -->
+          <mat-form-field class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input type="password" matInput placeholder="***" name="confirmPassword"
+              [(ngModel)]="userCreditials.confirmPassword" required #confirmPassword="ngModel">
+            <mat-error *ngIf="confirmPassword.errors && confirmPassword.invalid && confirmPassword.errors['required']">
+              Passsword is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <p>Already have an account? <span class="link" routerLink="/sign-in">Sign In</span></p>
+          <div class="flex gap-1em">
+            <button class="half-width" mat-raised-button color="warn" (click)="registerForm.reset()">Cancel</button>
+            <button class="flex-1" mat-raised-button color="primary" [disabled]="registerForm.invalid"
+              (click)="submit()">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,49 @@
+.illustration {
+    width: 100%;
+}
+
+.light-blue-color {
+    color: #447fc8;
+}
+
+.appointmentContainer {
+    height: 251px;
+    width: 272px;
+}
+
+.delAppointmentIcon {
+    height: 81px;
+    width: 81px;
+    border-radius: 50%;
+    background-color: #7fd1ca;
+}
+
+.appointmentsList {
+    overflow-y: auto;
+    max-height: 512px;
+}
+
+.addAppointmentIcon {
+    bottom: 13px;
+    left: 0;
+}
+
+.hospitalName {
+    width: 259px;
+}
+
+.padding-0-20 {
+    padding: 0px 20px;
+}
+
+.showAppointment:hover {
+    .hidden {
+        display: flex !important;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .appointmentTicket {
+        display: none;
+    }
+}

@@ -1,0 +1,80 @@
+<div class="flex column full-height padding-1em gap-1em">
+    <mat-card>
+        <div class="space-between flex padding-0-20 a-center">
+            <img class="hospitalName" src="../../../assets/images/hospital-name.png" alt="Hospital Name">
+            <div class="flex center-center column">
+                <button mat-raised-button (click)="logOut()" color="primary">Log Out</button>
+                <p class="margin-0"><b>Name:</b> {{loggedInUser.firstName | titlecase}} {{loggedInUser.lastName |
+                    titlecase}}</p>
+            </div>
+        </div>
+    </mat-card>
+    <mat-card class=" full-height padding-20">
+        <h2 class="margin-0">My Appointments</h2>
+        <div class="flex gap-1em">
+            <div class="flex-1 appointmentsList flex a-center gap-1em column">
+                <p *ngIf="allAppointments.length < 1" style="color: red;" class="margin-0">There are no appointments set
+                    yet</p>
+                <!-- Add appoint for no first appointment -->
+                <div (click)="addAppointment()" class="flex addAppointmentIcon absolute center-center">
+                    <img class="delAppointmentIcon cursor" matTooltip="Add appointment"
+                        src="../../../assets/icons/add_FILL0_wght400_GRAD0_opsz24.svg" alt="Delete this Appointment">
+                </div>
+                <div *ngIf="showPopup" style="left: 0;bottom: 0;"
+                    class="appointmentTicket flex absolute column full-height j-center">
+                    <div class="flex j-center">
+                        <img class="text-center" style="height: 24px;width: 24px;"
+                            src="../../../assets/icons/pending_actions_FILL0_wght400_GRAD0_opsz24.svg" alt="">
+                    </div>
+                    <mat-card style="background-color: #3f51b5;color: white;width: 154px;"
+                        class="flex column gap-1em padding-10">
+                        <div class="flex a-center column">
+                            <p class="margin-0">Appointment Date</p>
+                            <p class="margin-0 text-center"><b>{{showPopupDetails.appointmentDate | date}}</b></p>
+                        </div>
+                        <div class="flex a-center column">
+                            <hr class="full-width">
+                            <p class="margin-0">Status</p>
+                            <p class="margin-0 text-center"><b>{{showPopupDetails.status | titlecase}}</b></p>
+                        </div>
+                        <div class="flex a-center column">
+                            <hr class="full-width">
+                            <p class="margin-0">Doctor</p>
+                            <p class="margin-0 text-center"><b>{{showPopupDetails.doctorNames}}</b></p>
+                        </div>
+                    </mat-card>
+                </div>
+                <div *ngFor="let appointment of allAppointments">
+                    <div (dblclick)="showAppointment(appointment.id,appointment.status)"
+                        style="background-color: #dae7f7"
+                        class="flex appointmentContainer column padding-10 space-around cursor">
+                        <p class="text-center margin-0"><b>Title:</b> {{appointment.title | titlecase}} </p>
+                        <p class="text-center margin-0"><b>Created:</b> {{appointment.appointmentCreateDate | date}}
+                        </p>
+                        <div class="flex center-center">
+                            <img class="delAppointmentIcon cursor" (click)="deleteAppointment(appointment.id)"
+                                src="../../../assets/icons/delete_FILL0_wght400_GRAD0_opsz24.svg"
+                                alt="Delete this Appointment">
+                        </div>
+                        <button (click)="log(appointment.status)" mat-raised-button
+                            [color]="appointment.status === 'accepted' ? 'primary' : appointment.status === 'pending' ? 'warn' : 'accent'"
+                            title="Appointment status">{{appointment.status | titlecase}}</button>
+                    </div>
+                    <div (click)="addAppointment()" class="flex addAppointmentIcon absolute center-center">
+                        <img class="delAppointmentIcon cursor" matTooltip="Add appointment"
+                            src="../../../assets/icons/add_FILL0_wght400_GRAD0_opsz24.svg"
+                            alt="Delete this Appointment">
+                    </div>
+                </div>
+            </div>
+            <div class="flex-1 flex column">
+                <p class=" text-center">Simplifying making appointments of health and getting feedback fast through our
+                    <strong>Health Care System</strong>. My mission
+                    is fully dedicated to keep on making the system user friendly for everyone to use to make
+                    appointments
+                </p>
+                <img class="illustration" src="../../../assets/New folder/doctor-6029164_1280.png" alt="">
+            </div>
+        </div>
+    </mat-card>
+</div>

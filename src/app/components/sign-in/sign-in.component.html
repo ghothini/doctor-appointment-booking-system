@@ -1,0 +1,39 @@
+<div class="flex center-center full-height">
+  <mat-card class="width-90 height-90">
+    <div class="full-height flex padding-20">
+      <div class="flex column center-center half-width">
+        <h2 class="text-center">Sign In</h2>
+        <form #registerForm="ngForm">
+          <!-- Email -->
+          <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="example@example.com" name="email" [(ngModel)]="userCreditials.email"
+              required #email="ngModel">
+            <mat-error *ngIf="email.errors && email.invalid && email.errors['required']">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!-- Password -->
+          <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input type="password" matInput placeholder="***" name="password" [(ngModel)]="userCreditials.password" required
+              #password="ngModel">
+            <mat-error *ngIf="password.errors && password.invalid && password.errors['required']">
+              Password is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <p>Don't have an account? <span class="link" routerLink="/sign-up">Sign Up</span></p>
+          <div class="flex gap-1em">
+            <button class="half-width" mat-raised-button color="warn" (click)="registerForm.reset()">Cancel</button>
+            <button class="flex-1" mat-raised-button color="primary" [disabled]="registerForm.invalid"
+              (click)="submit()">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="flex column center-center flex-1">
+        <h1 class="margin-0 text-center pointer">Professional Medical Doctors</h1>
+        <img src="../../../assets/New folder/undraw_Connected_re_lmq2.png" alt="">
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,22 @@
+<div class="flex full-height column">
+    <mat-toolbar class="flex center-center space-around padding-10">
+        <button mat-raised-button (click)="logOut()" color="primary">Log Out | <strong>Administrator</strong></button>
+        <div class="flex gap-1em">
+            <div *ngFor="let nav of navItems; index as i" class="flex column center-center">
+                <img [src]="navItems[i].linkIcon">
+                <h2 class="margin-0 cursor" routerLink="{{nav.route}}"  [class.link]="selected === i" (click)="selectedNav(i)">{{nav.label | titlecase}}</h2>
+            </div>
+            <!-- <p *ngFor="let nav of navItems; index as i" routerLink="{{nav.route}}" class="linkTab"
+                [class.link]="selected === i" (click)="selectedNav(i)">{{nav.label | titlecase}}</p> -->
+        </div>
+
+        <!-- <mat-form-field appearance="outline" class="full-width">
+                <!-- <mat-label>Outline form field</mat-label> -->
+        <!-- <mat-icon matPrefix>search</mat-icon>
+                <input matInput placeholder="Search to-do"> -->
+        <!-- </mat-form-field> -->
+    </mat-toolbar>
+    <mat-card class="padding-10 flex-1">
+        <router-outlet></router-outlet>
+    </mat-card>
+</div>
