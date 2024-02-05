@@ -74,7 +74,7 @@ export class SignInComponent {
             this.snackbar.open('Admin logged in successfully', 'Ok', { duration: 3000 });
             // Store admin in session storage
             this.sharedService.store('admin', 'session', administator);
-            this.router.navigate(['/jk']);
+            this.router.navigate(['/landing']);
             return;
           } else {
             this.snackbar.open('Admin password does not match', 'Ok', { duration: 3000 });
